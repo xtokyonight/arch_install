@@ -105,8 +105,9 @@ yay -S --noconfirm \
 
 # Hyprland
 yay -S --useask --noconfirm \
-  hyprland-git polkit polkit-kde-agent foot wofi wlr-randr bemenu-wayland \
-  imv mako grim swww-git gifsicle
+  hyprland-git mako polkit-kde-agent qt5-wayland qt6-wayland \
+  foot wofi wlr-randr bemenu-wayland \
+  imv grim swww-git gifsicle
 
 yay -S --useask --noconfirm \
   zathura zathura-pdf-mupdf zathura-djvu \
