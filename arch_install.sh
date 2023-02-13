@@ -58,7 +58,7 @@ echo "Enter root/superuser password:" ; passwd
 
 pacman -Sy --noconfirm \
   neovim git stow zsh rsync \
-  grub efibootmgr networkmanager dhcpcd
+  grub efibootmgr networkmanager dhcpcd udiskie
 
 systemctl enable NetworkManager
 sed -i 's/^# %wheel ALL=(ALL:ALL) NOPASSWD: ALL/%wheel ALL=(ALL:ALL) NOPASSWD: ALL/' /etc/sudoers
@@ -97,7 +97,7 @@ git clone --depth 1 https://aur.archlinux.org/yay.git ~/.local/src/yay \
 # fonts
 yay -S --noconfirm \
   noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra \
-  nerd-fonts-jetbrains-mono
+  ttf-jetbrains-mono-nerd
 
 yay -S --noconfirm \
   ffmpeg pipewire-alsa pipewire-pulse pipewire-jack wireplumber \
@@ -107,17 +107,18 @@ yay -S --noconfirm \
 yay -S --useask --noconfirm \
   hyprland-git mako polkit-kde-agent qt5-wayland qt6-wayland \
   foot kickoff tofi wlr-randr \
-  imv grim swww-git gifsicle
+  imv grim slurp swww-git gifsicle \
+  spotify-launcher
 
 yay -S --useask --noconfirm \
-  zathura zathura-pdf-mupdf zathura-djvu \
+  zathura zathura-pdf-mupdf \
   wget aria2 tmux \
-  python python-pip imagemagick wayshot-bin wl-clipboard slurp \
+  python python-pip imagemagick wl-clipboard \
   zip unzip dosfstools exfatprogs ntfs-3g \
-  shellcheck checkbashisms libnotify android-tools \
+  shellcheck-bin checkbashisms libnotify android-tools \
   redshift neofetch firefox \
   pass trash-cli exa \
-  bash-completion xdg-user-dirs npm ripgrep fd nnn discord nsxiv yt-dlp
+  bash-completion xdg-user-dirs npm ripgrep fd nnn discord yt-dlp
 
 xdg-user-dirs-update
 
