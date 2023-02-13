@@ -106,7 +106,7 @@ yay -S --noconfirm \
 # Hyprland
 yay -S --useask --noconfirm \
   hyprland-git mako polkit-kde-agent qt5-wayland qt6-wayland \
-  foot wofi wlr-randr bemenu-wayland \
+  foot kickoff tofi wlr-randr \
   imv grim swww-git gifsicle
 
 yay -S --useask --noconfirm \
