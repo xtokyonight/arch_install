@@ -99,12 +99,12 @@ yay -S --noconfirm \
   noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra \
   ttf-jetbrains-mono-nerd
 
-yay -S --noconfirm \
+yay -S \
   ffmpeg pipewire-alsa pipewire-pulse pipewire-jack wireplumber \
   mpv mpd ncmpcpp pamixer playerctl alsa-utils pulsemixer obs-studio
 
 # Hyprland
-yay -S --useask --noconfirm \
+yay -S \
   hyprland-git mako polkit-kde-agent qt5-wayland qt6-wayland \
   foot kickoff tofi wlr-randr \
   imv grim slurp swww-git gifsicle \
