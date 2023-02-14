@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 #part1
 clear
@@ -90,34 +90,34 @@ git clone https://github.com/xtokyonight/dotfiles.git ~/.dotfiles \
 cd ~
 rm -f .gitignore
 
-# yay - Yet Another Yogurt - An AUR Helper Written in Go
-git clone --depth 1 https://aur.archlinux.org/yay.git ~/.local/src/yay \
-  && cd ~/.local/src/yay && makepkg -si --noconfirm && cd ~
+# Paru - Feature packed AUR helper
+git clone --depth 1 https://aur.archlinux.org/paru.git ~/.local/src/paru \
+  && cd ~/.local/src/paru && makepkg -si --noconfirm && cd ~
 
 # fonts
-yay -S --noconfirm \
+paru -S --noconfirm \
   noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra \
   ttf-jetbrains-mono-nerd
 
-yay -S \
+paru -S \
   ffmpeg pipewire-alsa pipewire-pulse pipewire-jack wireplumber \
   mpv mpd ncmpcpp pamixer playerctl alsa-utils pulsemixer obs-studio
 
 # Hyprland
-yay -S \
+paru -S \
   hyprland-git mako polkit-kde-agent qt5-wayland qt6-wayland \
   foot kickoff tofi wlr-randr \
   imv grim slurp swww-git gifsicle \
   spotify-launcher
 
-yay -S --useask --noconfirm \
+paru -S --useask --noconfirm \
   zathura zathura-pdf-mupdf \
   wget aria2 tmux \
   python python-pip imagemagick wl-clipboard \
   zip unzip dosfstools exfatprogs ntfs-3g \
   shellcheck-bin checkbashisms libnotify android-tools \
   redshift neofetch firefox \
-  pass trash-cli exa \
+  pass trash-cli exa bat \
   bash-completion xdg-user-dirs npm ripgrep fd nnn discord yt-dlp
 
 xdg-user-dirs-update
@@ -126,7 +126,7 @@ sudo npm install -g npm
 
 cd ~
 fc-cache -fv
-sh <(curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.sh)
+zsh <(curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.zsh)
 
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
