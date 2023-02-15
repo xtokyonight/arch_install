@@ -120,10 +120,14 @@ sudo pacman -S --noconfirm --needed \
   wget aria2 tmux \
   python python-pip imagemagick wl-clipboard \
   zip unzip dosfstools exfatprogs ntfs-3g \
-  checkbashisms libnotify android-tools \
+  checkbashisms libnotify \
   redshift neofetch firefox \
   pass trash-cli exa bat \
   bash-completion xdg-user-dirs npm ripgrep fd nnn discord yt-dlp
+
+printf '%s\n' "Setting up Android packages."
+sudo pacman -S --noconfirm --needed \
+    android-file-transfer android-tools syncthing
 
 xdg-user-dirs-update
 
