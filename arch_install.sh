@@ -42,6 +42,7 @@ sed -i 's/^#CheckSpace/CheckSpace/' /etc/pacman.conf
 sed -i 's/^#ParallelDownloads = 5/ParallelDownloads = 10/' /etc/pacman.conf
 sed -i 's/^ParallelDownloads = 10/&\nILoveCandy/' /etc/pacman.conf
 sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
+pacman -Syu
 
 ln -sf /usr/share/zoneinfo/Asia/Dhaka /etc/localtime
 hwclock --systohc
@@ -56,7 +57,7 @@ echo "127.0.1.1       $hostname"
 } >> /etc/hosts
 echo "Enter root/superuser password:" ; passwd
 
-pacman -Sy --noconfirm \
+pacman -S --noconfirm --needed \
   neovim git stow zsh rsync \
   grub efibootmgr networkmanager dhcpcd udiskie
 
@@ -90,32 +91,36 @@ git clone https://github.com/xtokyonight/dotfiles.git ~/.dotfiles \
 cd ~
 rm -f .gitignore
 
-# Paru - Feature packed AUR helper
+printf '%s\n' "Setting up paru."
 git clone --depth 1 https://aur.archlinux.org/paru.git ~/.local/src/paru \
   && cd ~/.local/src/paru && makepkg -si --noconfirm && cd ~
 
-# fonts
-paru -S --noconfirm \
+printf '%s\n' "Installing fonts."
+sudo pacman -S --noconfirm --needed \
   noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra \
   ttf-jetbrains-mono-nerd
 
-paru -S \
+printf '%s\n' "Installing audio & video related packages."
+sudo pacman -S --noconfirm --needed \
   ffmpeg pipewire-alsa pipewire-pulse pipewire-jack wireplumber \
   mpv mpd ncmpcpp pamixer playerctl alsa-utils pulsemixer obs-studio
 
 # Hyprland
-paru -S \
-  hyprland-git mako polkit-kde-agent qt5-wayland qt6-wayland \
-  foot kickoff tofi wlr-randr \
-  imv grim slurp swww-git gifsicle \
+sudo pacman -S --noconfirm --needed \
+  mako polkit-kde-agent qt5-wayland qt6-wayland \
+  foot imv grim slurp gifsicle \
   spotify-launcher
 
-paru -S --useask --noconfirm \
+# AUR packages
+paru -S \
+  hyprland-git kickoff tofi swww-git shellcheck-bin
+
+sudo pacman -S --noconfirm --needed \
   zathura zathura-pdf-mupdf \
   wget aria2 tmux \
   python python-pip imagemagick wl-clipboard \
   zip unzip dosfstools exfatprogs ntfs-3g \
-  shellcheck-bin checkbashisms libnotify android-tools \
+  checkbashisms libnotify android-tools \
   redshift neofetch firefox \
   pass trash-cli exa bat \
   bash-completion xdg-user-dirs npm ripgrep fd nnn discord yt-dlp
