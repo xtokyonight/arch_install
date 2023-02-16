@@ -79,12 +79,10 @@ exit
 
 #part3
 cd ~
-
-# dirs
 mkdir -p ~/.config ~/.local/state/bash ~/.local/state/zsh ~/.local/state/mpd \
   ~/.local/state/mpd/playlists ~/.local/state/ncmpcpp ~/.cache ~/.vim/undo
 
-# dotfiles
+printf '%s\n' "Getting my dotfiles."
 git clone https://github.com/xtokyonight/dotfiles.git ~/.dotfiles \
   && cd .dotfiles/ && stow .
 
@@ -108,7 +106,7 @@ sudo pacman -S --noconfirm --needed \
 # Hyprland
 sudo pacman -S --noconfirm --needed \
   mako polkit-kde-agent qt5-wayland qt6-wayland \
-  foot imv grim slurp gifsicle \
+  kitty imv grim slurp gifsicle \
   spotify-launcher
 
 # AUR packages
@@ -122,7 +120,7 @@ sudo pacman -S --noconfirm --needed \
   zip unzip dosfstools exfatprogs ntfs-3g \
   checkbashisms libnotify \
   redshift neofetch firefox \
-  pass trash-cli exa bat \
+  pass trash-cli exa bat lazygit \
   bash-completion xdg-user-dirs npm ripgrep fd nnn discord yt-dlp
 
 printf '%s\n' "Setting up Android packages."
