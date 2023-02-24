@@ -37,6 +37,7 @@ rm -rf /mnt/arch_install2.sh
 exit
 
 #part2
+printf '\033c'
 sed -i 's/^#Color/Color/' /etc/pacman.conf
 sed -i 's/^#CheckSpace/CheckSpace/' /etc/pacman.conf
 sed -i 's/^#ParallelDownloads = 5/ParallelDownloads = 10/' /etc/pacman.conf
@@ -89,9 +90,9 @@ git clone https://github.com/xtokyonight/dotfiles.git ~/.dotfiles \
 cd ~
 rm -f .gitignore
 
-printf '%s\n' "Setting up paru."
-git clone --depth 1 https://aur.archlinux.org/paru.git ~/.local/src/paru \
-  && cd ~/.local/src/paru && makepkg -si --noconfirm && cd ~
+printf '%s\n' "Setting up yay."
+git clone --depth 1 https://aur.archlinux.org/yay.git ~/.local/src/yay \
+  && cd ~/.local/src/yay && makepkg -si --noconfirm && cd ~
 
 printf '%s\n' "Installing fonts."
 sudo pacman -S --noconfirm --needed \
@@ -106,12 +107,12 @@ sudo pacman -S --noconfirm --needed \
 # Hyprland
 sudo pacman -S --noconfirm --needed \
   mako polkit-kde-agent qt5-wayland qt6-wayland \
-  kitty imv grim slurp gifsicle \
+  foot imv grim slurp gifsicle \
   spotify-launcher
 
 # AUR packages
-paru -S \
-  hyprland-git kickoff tofi swww-git shellcheck-bin
+yay -S \
+  hyprland-git swww-git hyprpicker-git kickoff tofi shellcheck-bin
 
 sudo pacman -S --noconfirm --needed \
   zathura zathura-pdf-mupdf \
