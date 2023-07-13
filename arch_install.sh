@@ -80,7 +80,7 @@ exit
 
 #part3
 cd ~
-mkdir -p ~/.config ~/.local/state/bash ~/.local/state/zsh ~/.local/state/mpd \
+mkdir -p ~/.config ~/.local/state/bash ~/.local/state/zsh \
   ~/.local/state/mpd/playlists ~/.local/state/ncmpcpp ~/.cache ~/.vim/undo
 
 printf '%s\n' "Getting my dotfiles."
@@ -89,6 +89,16 @@ git clone https://github.com/xtokyonight/dotfiles.git ~/.dotfiles \
 
 cd ~
 rm -f .gitignore
+
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+cargo install sccache
+{
+echo "[build]"
+echo 'rustc-wrapper = "sccache"'
+} >> ~/.cargo/config
+
+cargo install cargo-info
+cargo install paru
 
 printf '%s\n' "Setting up yay."
 git clone --depth 1 https://aur.archlinux.org/yay.git ~/.local/src/yay \
@@ -106,23 +116,22 @@ sudo pacman -S --noconfirm --needed \
 
 # Hyprland
 sudo pacman -S --noconfirm --needed \
-  mako polkit-kde-agent qt5-wayland qt6-wayland \
-  foot imv grim slurp gifsicle \
-  spotify-launcher
+  hyprland foot mako xdg-desktop-portal-hyprland polkit-kde-agent qt5-wayland qt6-wayland glfw-wayland \
+  imv grim slurp gifsicle \
+  spotify-launcher xorg-xlsclients
 
 # AUR packages
 yay -S \
-  hyprland-git swww-git hyprpicker-git kickoff tofi shellcheck-bin
+  anki swww-git hyprpicker-git kickoff tofi shellcheck-bin topgrade
 
 sudo pacman -S --noconfirm --needed \
-  zathura zathura-pdf-mupdf \
   wget aria2 tmux \
   python python-pip imagemagick wl-clipboard \
-  zip unzip dosfstools exfatprogs ntfs-3g \
+  zip unzip unrar dosfstools exfatprogs ntfs-3g \
   checkbashisms libnotify \
-  redshift neofetch firefox \
-  pass trash-cli exa bat lazygit \
-  bash-completion xdg-user-dirs npm ripgrep fd nnn discord yt-dlp
+  redshift neofetch firefox chromium \
+  pass trash-cli exa bat zellij lazygit \
+  bash-completion xdg-user-dirs npm ripgrep fd nnn lf discord yt-dlp
 
 printf '%s\n' "Setting up Android packages."
 sudo pacman -S --noconfirm --needed \
