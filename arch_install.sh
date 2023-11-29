@@ -122,14 +122,14 @@ sudo pacman -S --noconfirm --needed \
 
 # AUR packages
 yay -S \
-  anki swww-git hyprpicker-git kickoff tofi shellcheck-bin topgrade
+  anki swww-git hyprpicker-git kickoff tofi topgrade
 
 sudo pacman -S --noconfirm --needed \
-  wget aria2 tmux \
+  wget aria2 tmux pacman-contrib \
   python python-pip imagemagick wl-clipboard \
   zip unzip unrar dosfstools exfatprogs ntfs-3g \
   checkbashisms libnotify \
-  redshift neofetch firefox chromium \
+  redshift neofetch firefox obsidian chromium \
   pass trash-cli exa bat zellij lazygit \
   bash-completion xdg-user-dirs npm ripgrep fd nnn lf discord yt-dlp
 
