@@ -116,9 +116,10 @@ sudo pacman -S --noconfirm --needed \
 
 # Hyprland
 sudo pacman -S --noconfirm --needed \
-  hyprland foot mako xdg-desktop-portal-hyprland polkit-kde-agent qt5-wayland qt6-wayland glfw-wayland \
+  hyprland foot mako pipewire wireplumber xdg-desktop-portal-hyprland \
+  xdg-desktop-portal-gtk polkit-kde-agent qt5-wayland qt6-wayland glfw-wayland \
   imv grim slurp gifsicle \
-  spotify-launcher xorg-xlsclients
+  spotify-launcher xorg-xlsclients waybar swaybg
 
 # AUR packages
 yay -S \
@@ -129,9 +130,9 @@ sudo pacman -S --noconfirm --needed \
   python python-pip imagemagick wl-clipboard \
   zip unzip unrar dosfstools exfatprogs ntfs-3g \
   checkbashisms libnotify \
-  redshift neofetch firefox obsidian chromium \
+  redshift neofetch firefox obsidian chromium syncplay \
   pass trash-cli exa bat zellij lazygit \
-  bash-completion xdg-user-dirs npm ripgrep fd nnn lf discord yt-dlp
+  bash-completion xdg-user-dirs npm ripgrep fd nnn lf discord yt-dlp qbittorrent
 
 printf '%s\n' "Setting up Android packages."
 sudo pacman -S --noconfirm --needed \
