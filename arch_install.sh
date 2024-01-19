@@ -132,7 +132,8 @@ sudo pacman -S --noconfirm --needed \
   checkbashisms libnotify \
   redshift neofetch firefox obsidian chromium syncplay \
   pass trash-cli exa bat zellij lazygit \
-  bash-completion xdg-user-dirs npm ripgrep fd nnn lf discord yt-dlp qbittorrent
+  bash-completion xdg-user-dirs npm ripgrep fd nnn lf discord yt-dlp qbittorrent \
+  lf chafa
 
 printf '%s\n' "Setting up Android packages."
 sudo pacman -S --noconfirm --needed \
