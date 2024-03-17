@@ -107,7 +107,7 @@ git clone --depth 1 https://aur.archlinux.org/yay.git ~/.local/src/yay \
 printf '%s\n' "Installing fonts."
 sudo pacman -S --noconfirm --needed \
   noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra \
-  ttf-jetbrains-mono-nerd
+  ttf-jetbrains-mono-nerd otf-font-awesome
 
 printf '%s\n' "Installing audio & video related packages."
 sudo pacman -S --noconfirm --needed \
@@ -131,8 +131,8 @@ sudo pacman -S --noconfirm --needed \
   zip unzip unrar dosfstools exfatprogs ntfs-3g \
   checkbashisms libnotify \
   redshift neofetch firefox obsidian chromium syncplay \
-  pass trash-cli exa bat zellij lazygit \
-  bash-completion xdg-user-dirs npm ripgrep fd nnn lf discord yt-dlp qbittorrent \
+  pass trash-cli exa bat zellij \
+  bash-completion xdg-user-dirs npm ripgrep fd lazygit nnn lf discord yt-dlp qbittorrent \
   lf chafa
 
 printf '%s\n' "Setting up Android packages."
@@ -145,7 +145,7 @@ sudo npm install -g npm
 
 cd ~
 fc-cache -fv
-zsh <(curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.zsh)
+zsh <(curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.zsh) --branch release-v1
 
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
