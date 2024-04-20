@@ -13,17 +13,16 @@ sudo pacman -Syu --needed \
   git libxft libxinerama vim wget xorg-xrandr sxhkd \
   noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra ttf-liberation \
   ttf-fira-code ttf-font-awesome ttf-jetbrains-mono ttf-nerd-fonts-symbols \
-  qutebrowser firefox imv nsxiv \
+  qutebrowser firefox imv nsxiv xwallpaper xcompmgr xclip \
   imagemagick flameshot maim obs-studio audacity \
-  pavucontrol mpd cmus ncmpcpp ffmpeg mpv kdenlive handbrake handbrake-cli \
-  mat2 mediainfo \
+  pavucontrol cmus ffmpeg mpv mat2 mediainfo \
   kdeconnect android-file-transfer android-tools \
   zsh kitty tmux lf nnn trash-cli borg rsync syncthing \
   zip unzip dosfstools exfatprogs ntfs-3g udiskie \
   htop neofetch man-db man-pages polkit-kde-agent \
   libreoffice-fresh zathura zathura-pdf-mupdf zathura-djvu \
   aria2 python python-pip shellcheck checkbashisms libnotify dunst \
-  redshift screenkey xwallpaper xdotool xclip xsel xcompmgr pass \
+  screenkey xdotool xsel pass \
   bash-completion xdg-user-dirs npm ripgrep fd discord \
   openrgb gimp qbittorrent exa 
 
