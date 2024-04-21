@@ -62,17 +62,17 @@ git clone https://github.com/muquit/grabc.git $HOME/suckless/grabc
 make --directory=$HOME/suckless/grabc
 sudo make install --directory=$HOME/suckless/grabc
 
-sudo pacman -S --needed base-devel
-git clone https://aur.archlinux.org/paru.git
-cd paru
-makepkg -si
-
 # ani-cli
 cd
 git clone --depth 1 https://github.com/pystardust/ani-cli.git
 sudo cp ani-cli/ani-cli /usr/local/bin
 rm -rf ani-cli
 
+# fzf
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
 
+# sudo pacman -S --needed base-devel
+# git clone https://aur.archlinux.org/paru.git
+# cd paru
+# makepkg -si
