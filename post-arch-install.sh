@@ -52,46 +52,54 @@ xdg-mime default nsxiv.desktop image/jpeg
 xdg-mime default nsxiv.desktop image/gif
 xdg-mime default org.pwmt.zathura.desktop application/pdf
 
-# dwm
+printf '%s\n' "Installing dwm"
 #git clone https://git.suckless.org/dwm $HOME/suckless/dwm
 git clone https://github.com/xtokyonight/dwm.git $HOME/suckless/dwm
 sudo make clean install --directory=$HOME/suckless/dwm
 
 # dmenu
+printf '%s\n' "Installing dmenu"
 git clone https://git.suckless.org/dmenu $HOME/suckless/dmenu
 sudo make clean install --directory=$HOME/suckless/dmenu
 
 # st
+printf '%s\n' "Installing st"
 #git clone https://git.suckless.org/st $HOME/suckless/st
 git clone https://github.com/xtokyonight/st.git $HOME/suckless/st
 sudo make clean install --directory=$HOME/suckless/st
 
 # slock
+printf '%s\n' "Installing slock"
 #git clone https://git.suckless.org/slock $HOME/suckless/slock
 git clone https://github.com/xtokyonight/slock.git $HOME/suckless/slock
 sudo make clean install --directory=$HOME/suckless/slock
 
 # slstatus
+printf '%s\n' "Installing slstatus"
 #git clone https://git.suckless.org/slstatus $HOME/suckless/slstatus
 git clone https://github.com/xtokyonight/slstatus.git $HOME/suckless/slstatus
 sudo make clean install --directory=$HOME/suckless/slstatus
 
 # xbanish
+printf '%s\n' "Installing xbanish"
 git clone https://github.com/jcs/xbanish.git $HOME/suckless/xbanish
 sudo make clean install --directory=$HOME/suckless/xbanish
 
 # grabc
+printf '%s\n' "Installing grabc"
 git clone https://github.com/muquit/grabc.git $HOME/suckless/grabc
 make --directory=$HOME/suckless/grabc
 sudo make install --directory=$HOME/suckless/grabc
 
 # ani-cli
+printf '%s\n' "Installing ani-cli"
 cd
 git clone --depth 1 https://github.com/pystardust/ani-cli.git
 sudo cp ani-cli/ani-cli /usr/local/bin
 rm -rf ani-cli
 
 # fzf
+printf '%s\n' "Installing fzf"
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
 
