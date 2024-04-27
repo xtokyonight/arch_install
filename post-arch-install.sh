@@ -1,16 +1,29 @@
 #!/usr/bin/bash
 
+clear
+cd "$HOME" || exit
+sudo pacman -Syu
+
+# AUR
+sudo pacman -S --needed git base-devel
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -si
+
 sudo sed -i 's/^#Color/Color/' /etc/pacman.conf
 sudo sed -i 's/^#ParallelDownloads = 5/&\nILoveCandy/' /etc/pacman.conf
 
 printf '%s\n' "Getting my dotfiles."
 git clone https://github.com/xtokyonight/dotfiles.git ~/.dotfiles \
-  && cd .dotfiles/ && stow .
+  && cd .dotfiles && stow . && cd "$HOME"
 
-cd ~
+printf '%s\n' "Getting my kickstart.nvim config"
+# neovim and it's dependencies for kickstart.nvim config
+sudo pacman -S --noconfirm --needed gcc make git ripgrep fd unzip neovim
+git clone https://github.com/xtokyonight/kickstart.nvim.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
 
-sudo pacman -Syu --needed \
-  git github-cli libxft libxinerama vim wget xorg-xrandr sxhkd \
+sudo pacman -S --needed \
+  git github-cli libxft libxinerama neovim zellij wget xorg-xrandr sxhkd \
   noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra ttf-liberation \
   ttf-fira-code ttf-font-awesome ttf-jetbrains-mono ttf-nerd-fonts-symbols \
   qutebrowser python-adblock firefox imv nsxiv xwallpaper xcompmgr xclip \
@@ -20,14 +33,24 @@ sudo pacman -Syu --needed \
   zsh kitty tmux lf nnn trash-cli borg rsync syncthing \
   zip unzip dosfstools exfatprogs ntfs-3g udiskie \
   htop neofetch man-db man-pages polkit-kde-agent \
-  libreoffice-fresh zathura zathura-pdf-mupdf \
+  libreoffice-fresh zathura zathura-pdf-poppler \
   aria2 python python-pip shellcheck checkbashisms libnotify dunst \
   screenkey xdotool xsel pass yt-dlp \
-  bash-completion xdg-user-dirs ripgrep fd discord \
+  bash-completion xdg-user-dirs xdg-utils ripgrep fd discord \
   openrgb gimp qbittorrent exa 
 
+yay -S shellcheck-bin
 xdg-user-dirs-update
 fc-cache -fv
+
+# lf previewing
+yay -S ctpv-git ueberzugpp bat ffmpegthumbnailer
+
+# Set default applications with xdg-mime
+xdg-mime default nsxiv.desktop image/png
+xdg-mime default nsxiv.desktop image/jpeg
+xdg-mime default nsxiv.desktop image/gif
+xdg-mime default org.pwmt.zathura.desktop application/pdf
 
 # dwm
 #git clone https://git.suckless.org/dwm $HOME/suckless/dwm
