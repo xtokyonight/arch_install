@@ -17,9 +17,9 @@ printf '%s\n' "Getting my dotfiles."
 git clone https://github.com/xtokyonight/dotfiles.git ~/.dotfiles \
   && cd .dotfiles && stow . && cd "$HOME"
 
-printf '%s\n' "Getting my kickstart.nvim config"
-# neovim and it's dependencies for kickstart.nvim config
+printf '%s\n' "Installing neovim and it's dependencies for kickstart.nvim config"
 sudo pacman -S --noconfirm --needed gcc make git ripgrep fd unzip neovim
+printf '%s\n' "Getting my kickstart.nvim config"
 git clone https://github.com/xtokyonight/kickstart.nvim.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
 
 sudo pacman -S --needed \
