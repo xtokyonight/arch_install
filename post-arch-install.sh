@@ -59,7 +59,7 @@ sudo pacman -S --needed \
   kdeconnect android-file-transfer android-tools \
   zsh kitty tmux lf nnn trash-cli borg rsync syncthing \
   zip unzip dosfstools exfatprogs ntfs-3g udiskie \
-  htop neofetch man-db man-pages polkit-kde-agent \
+  htop fastfetch man-db man-pages polkit-kde-agent \
   libreoffice-fresh zathura zathura-pdf-poppler \
   aria2 python python-pip shellcheck checkbashisms libnotify dunst \
   screenkey xdotool xsel pass yt-dlp \
