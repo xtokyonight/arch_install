@@ -1,9 +1,11 @@
 #!/usr/bin/bash
 
-clear; cd; sudo pacman -Syu
+clear
+cd
+sudo pacman -Syu
 
 printf '%s\n' "Installing dwm"
-sudo pacman -S --noconfirm --needed git libxft libxinerama terminus-font
+sudo pacman -S --noconfirm --needed libxft libxinerama
 #git clone https://git.suckless.org/dwm $HOME/suckless/dwm
 git clone https://github.com/xtokyonight/dwm.git $HOME/suckless/dwm
 sudo make clean install --directory=$HOME/suckless/dwm
@@ -43,11 +45,6 @@ sudo sed -i 's/^#ParallelDownloads = 5/&\nILoveCandy/' /etc/pacman.conf
 printf '%s\n' "Getting my dotfiles."
 git clone https://github.com/xtokyonight/dotfiles.git ~/.dotfiles \
   && cd .dotfiles && stow . && cd
-
-printf '%s\n' "Installing neovim and it's dependencies for kickstart.nvim config"
-sudo pacman -S --noconfirm --needed gcc make git ripgrep fd unzip neovim
-printf '%s\n' "Getting my kickstart.nvim config"
-git clone https://github.com/xtokyonight/kickstart.nvim.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
 
 sudo pacman -S --needed \
   git github-cli libxft libxinerama neovim emacs zellij wget xorg-xrandr sxhkd \
