@@ -2,6 +2,8 @@
 
 clear
 cd
+sudo sed -i 's/^#Color/Color/' /etc/pacman.conf
+sudo sed -i 's/^#ParallelDownloads = 5/&\nILoveCandy/' /etc/pacman.conf
 sudo pacman -Syu
 
 # install AUR helper
@@ -10,28 +12,34 @@ pacman -S --needed git base-devel
 git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si
+cd
 
 printf '%s\n' "Installing dwm"
 sudo pacman -S --noconfirm --needed libxft libxinerama
-#git clone https://git.suckless.org/dwm $HOME/suckless/dwm
-git clone https://github.com/xtokyonight/dwm.git $HOME/suckless/dwm
+git clone https://git.suckless.org/dwm $HOME/suckless/dwm
+#git clone https://github.com/xtokyonight/dwm.git $HOME/suckless/dwm
+cp $HOME/suckless/dwm/config.def.h $HOME/suckless/dwm/config.h
 sudo make install clean --directory=$HOME/suckless/dwm
 
 # dmenu
 printf '%s\n' "Installing dmenu"
 git clone https://git.suckless.org/dmenu $HOME/suckless/dmenu
+cp $HOME/suckless/dmenu/config.def.h $HOME/suckless/dmenu/config.h
 sudo make install clean --directory=$HOME/suckless/dmenu
 
 # st
 printf '%s\n' "Installing st"
-#git clone https://git.suckless.org/st $HOME/suckless/st
-git clone https://github.com/xtokyonight/st.git $HOME/suckless/st
+git clone https://git.suckless.org/st $HOME/suckless/st
+#git clone https://github.com/xtokyonight/st.git $HOME/suckless/st
+cp $HOME/suckless/st/config.def.h $HOME/suckless/st/config.h
 sudo make install clean --directory=$HOME/suckless/st
 
 # slock
 printf '%s\n' "Installing slock"
-#git clone https://git.suckless.org/slock $HOME/suckless/slock
-git clone https://github.com/xtokyonight/slock.git $HOME/suckless/slock
+git clone https://git.suckless.org/slock $HOME/suckless/slock
+#git clone https://github.com/xtokyonight/slock.git $HOME/suckless/slock
+cp $HOME/suckless/slock/config.def.h $HOME/suckless/slock/config.h
+sed -i 's/nogroup/nobody/' $HOME/suckless/slock/config.h
 sudo make install clean --directory=$HOME/suckless/slock
 
 # slstatus
@@ -41,10 +49,7 @@ git clone https://github.com/xtokyonight/slstatus.git $HOME/suckless/slstatus
 sudo make install clean --directory=$HOME/suckless/slstatus
 
 # install fonts
-sudo pacman -S noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra
-
-sudo sed -i 's/^#Color/Color/' /etc/pacman.conf
-sudo sed -i 's/^#ParallelDownloads = 5/&\nILoveCandy/' /etc/pacman.conf
+yay -S noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra getnf
 
 printf '%s\n' "Getting my dotfiles."
 sudo pacman -S stow
@@ -53,8 +58,6 @@ git clone https://github.com/xtokyonight/dotfiles.git ~/.dotfiles \
 
 sudo pacman -S --needed \
   github-cli neovim emacs zellij wget xorg-xrandr sxhkd \
-  ttf-liberation \
-  ttf-fira-code ttf-font-awesome ttf-jetbrains-mono ttf-nerd-fonts-symbols terminus-font \
   qutebrowser python-adblock firefox imv nsxiv xwallpaper xcompmgr xclip \
   imagemagick flameshot maim obs-studio audacity \
   pavucontrol cmus ffmpeg mpv mat2 mediainfo \
@@ -66,7 +69,7 @@ sudo pacman -S --needed \
   aria2 python python-pip shellcheck checkbashisms libnotify dunst \
   screenkey xdotool xsel pass yt-dlp \
   bash-completion xdg-user-dirs xdg-utils ripgrep fd discord \
-  openrgb gimp qbittorrent exa 
+  openrgb gimp qbittorrent exa alsa-utils
 
 yay -S shellcheck-bin
 xdg-user-dirs-update
@@ -104,7 +107,9 @@ printf '%s\n' "Installing fzf"
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
 
-# sudo pacman -S --needed base-devel
-# git clone https://aur.archlinux.org/paru.git
-# cd paru
-# makepkg -si
+# for screenshotting purposes
+# flameshot - opensource screenshot software
+# maim - maim (Make Image) is an utility that takes screenshots of your desktop. It's meant to overcome shortcomings of scrot and performs better in several ways.
+# xclip - to copy screenshot to clipboard
+# xdotool - to get active window and screenshot it using maim
+
