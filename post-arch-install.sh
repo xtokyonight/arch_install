@@ -4,51 +4,56 @@ clear
 cd
 sudo pacman -Syu
 
-printf '%s\n' "Installing dwm"
-sudo pacman -S --noconfirm --needed libxft libxinerama
-#git clone https://git.suckless.org/dwm $HOME/suckless/dwm
-git clone https://github.com/xtokyonight/dwm.git $HOME/suckless/dwm
-sudo make clean install --directory=$HOME/suckless/dwm
-
-# dmenu
-printf '%s\n' "Installing dmenu"
-git clone https://git.suckless.org/dmenu $HOME/suckless/dmenu
-sudo make clean install --directory=$HOME/suckless/dmenu
-
-# st
-printf '%s\n' "Installing st"
-#git clone https://git.suckless.org/st $HOME/suckless/st
-git clone https://github.com/xtokyonight/st.git $HOME/suckless/st
-sudo make clean install --directory=$HOME/suckless/st
-
-# slock
-printf '%s\n' "Installing slock"
-#git clone https://git.suckless.org/slock $HOME/suckless/slock
-git clone https://github.com/xtokyonight/slock.git $HOME/suckless/slock
-sudo make clean install --directory=$HOME/suckless/slock
-
-# slstatus
-printf '%s\n' "Installing slstatus"
-#git clone https://git.suckless.org/slstatus $HOME/suckless/slstatus
-git clone https://github.com/xtokyonight/slstatus.git $HOME/suckless/slstatus
-sudo make clean install --directory=$HOME/suckless/slstatus
-
+# install AUR helper
 printf '%s\n' "Installing yay"
 pacman -S --needed git base-devel
 git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si
 
+printf '%s\n' "Installing dwm"
+sudo pacman -S --noconfirm --needed libxft libxinerama
+#git clone https://git.suckless.org/dwm $HOME/suckless/dwm
+git clone https://github.com/xtokyonight/dwm.git $HOME/suckless/dwm
+sudo make install clean --directory=$HOME/suckless/dwm
+
+# dmenu
+printf '%s\n' "Installing dmenu"
+git clone https://git.suckless.org/dmenu $HOME/suckless/dmenu
+sudo make install clean --directory=$HOME/suckless/dmenu
+
+# st
+printf '%s\n' "Installing st"
+#git clone https://git.suckless.org/st $HOME/suckless/st
+git clone https://github.com/xtokyonight/st.git $HOME/suckless/st
+sudo make install clean --directory=$HOME/suckless/st
+
+# slock
+printf '%s\n' "Installing slock"
+#git clone https://git.suckless.org/slock $HOME/suckless/slock
+git clone https://github.com/xtokyonight/slock.git $HOME/suckless/slock
+sudo make install clean --directory=$HOME/suckless/slock
+
+# slstatus
+printf '%s\n' "Installing slstatus"
+#git clone https://git.suckless.org/slstatus $HOME/suckless/slstatus
+git clone https://github.com/xtokyonight/slstatus.git $HOME/suckless/slstatus
+sudo make install clean --directory=$HOME/suckless/slstatus
+
+# install fonts
+sudo pacman -S noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra
+
 sudo sed -i 's/^#Color/Color/' /etc/pacman.conf
 sudo sed -i 's/^#ParallelDownloads = 5/&\nILoveCandy/' /etc/pacman.conf
 
 printf '%s\n' "Getting my dotfiles."
+sudo pacman -S stow
 git clone https://github.com/xtokyonight/dotfiles.git ~/.dotfiles \
   && cd .dotfiles && stow . && cd
 
 sudo pacman -S --needed \
-  git github-cli libxft libxinerama neovim emacs zellij wget xorg-xrandr sxhkd \
-  noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra ttf-liberation \
+  github-cli neovim emacs zellij wget xorg-xrandr sxhkd \
+  ttf-liberation \
   ttf-fira-code ttf-font-awesome ttf-jetbrains-mono ttf-nerd-fonts-symbols terminus-font \
   qutebrowser python-adblock firefox imv nsxiv xwallpaper xcompmgr xclip \
   imagemagick flameshot maim obs-studio audacity \
